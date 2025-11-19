@@ -217,7 +217,9 @@ class SAM2VideoPredictor(SAM2Base):
         if normalize_coords:
             video_H = inference_state["video_height"]
             video_W = inference_state["video_width"]
-            points = points / torch.tensor([video_W, video_H]).to(points.device)
+            # Only normalize if points tensor is not empty
+            if points.shape[1] > 0:
+                points = points / torch.tensor([video_W, video_H]).to(points.device)
         # scale the (normalized) coordinates by the model's internal image size
         points = points * self.image_size
         points = points.to(inference_state["device"])
