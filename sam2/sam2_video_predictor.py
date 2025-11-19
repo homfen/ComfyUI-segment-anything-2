@@ -229,7 +229,7 @@ class SAM2VideoPredictor(SAM2Base):
                   points.shape,
                   video_points.shape,
                   flush=True)
-            if points.shape[1] > 0:
+            if points.shape[2] > 0:
                 points = points / video_points
         # scale the (normalized) coordinates by the model's internal image size
         points = points * self.image_size
