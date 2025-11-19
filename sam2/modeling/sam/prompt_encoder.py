@@ -109,7 +109,7 @@ class PromptEncoder(nn.Module):
                       points.shape,
                       padding_point.shape,
                       flush=True)
-                if points.shape[1] == padding_point.shape[1]:
+                if points.shape[2] == padding_point.shape[2]:
                     points = torch.cat([points, padding_point], dim=1)
                     labels = torch.cat([labels, padding_label], dim=1)
         point_embedding = self.pe_layer.forward_with_coords(
