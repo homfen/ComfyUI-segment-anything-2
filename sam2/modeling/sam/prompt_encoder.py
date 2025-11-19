@@ -105,10 +105,6 @@ class PromptEncoder(nn.Module):
                                             device=points.device)
                 padding_label = -torch.ones(
                     (labels.shape[0], 1), device=labels.device)
-                print("_embed_points: ",
-                      points.shape,
-                      padding_point.shape,
-                      flush=True)
                 if points.shape[2] == padding_point.shape[2]:
                     points = torch.cat([points, padding_point], dim=1)
                     labels = torch.cat([labels, padding_label], dim=1)
