@@ -90,8 +90,8 @@ class PromptEncoder(nn.Module):
         """Embeds point prompts."""
         points = points + 0.5  # Shift to center of pixel
         if pad:
-            # Check if points is empty (shape[1] == 0)
-            if points.shape[1] == 0:
+            # Check if points is empty (shape[2] == 0)
+            if points.shape[2] == 0:
                 # If no points exist, create a single padding point
                 padding_point = torch.zeros((points.shape[0], 1, 2),
                                             device=points.device)
